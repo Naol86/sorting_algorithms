@@ -9,25 +9,38 @@ void insertion_sort_list(listint_t **list)
 		print_list(*list);
 		return;
 	}
-
 	current = (*list)->next;
-	while(current){
-		if(current->prev->n > current->n){
+	while (current)
+	{
+		if (current->prev->n > current->n)
+		{
 			temp = current;
-			printf("this count %d\n",current->n);
-			while(temp && temp->n < temp->prev->n){
-				printf("this is preve ");
-				print_list(*list);
-				temp->next->prev = temp->prev;
-				temp->prev->next = temp->next;
+			while (temp->prev != NULL && temp->n < temp->prev->n)
+			{
+				if (temp->next != NULL)
+				{
+					temp->next->prev = temp->prev;
+					temp->prev->next = temp->next;
+				}
+				else
+					temp->prev->next = NULL;
+				current = temp->prev->next;
 				temp->next = temp->prev;
-				temp->prev = temp->prev->prev;
-				temp->prev->next = temp;
+				if (temp->prev->prev == NULL)
+				{
+					temp->prev = NULL;
+					(*list) = temp;
+				}
+				else
+				{
+					temp->prev = temp->prev->prev;
+					temp->prev->next = temp;
+				}
 				temp->next->prev = temp;
-				printf("this is after ");
-				print_list(*list);
 			}
 		}
-		current = current->next;
+		else
+			current = current->next;
 	}
+	print_list(*list);
 }
