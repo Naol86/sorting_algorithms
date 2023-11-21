@@ -39,10 +39,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *current, *temp;
 
 	if (list == NULL || (*list)->next == NULL)
-	{
-		print_list(*list);
 		return;
-	}
 	current = (*list)->next;
 	while (current)
 	{
