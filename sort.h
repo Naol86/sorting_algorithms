@@ -30,5 +30,7 @@ void quick_sort_alg(int *array, int lo, int hi, int size);
 void quick_sort(int *array, size_t size);
 void swap_node(listint_t **h, listint_t *a, listint_t *b);
 void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+
 
 #endif
