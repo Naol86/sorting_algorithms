@@ -5,9 +5,12 @@
 */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *holder, *lasth;
+	listint_t *holder = NULL;
+	listint_t *lasth = NULL;
 	int is_sorted = 1;
 
+	if (!list || !(*list) || !(*list)->next)
+		return;
 	holder = (*list);
 	do {
 		is_sorted = 0;
